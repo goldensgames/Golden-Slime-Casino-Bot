@@ -238,6 +238,17 @@ if(command === prefix + "SPIN" + " " + num){
 	message.channel.send(message.author + " You don't have enough tokens to spin.")
 	}
 } 
+if(command === prefix + "REDEEM" + " " + num){
+	if(itemdroptable.includes(num)){
+		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
+		userData[sender.id + message.guild.id].inventory.splice(position)
+		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
+		message.channel.send("Send Imposto your in-game name to receive your prize");
+		
+	} else if (!itemdroptable.includes(num)){
+		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
+	}
+}
 }	
 
 
