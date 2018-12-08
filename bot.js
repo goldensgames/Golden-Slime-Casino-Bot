@@ -29,6 +29,14 @@ var itemdroptable = {
 	hallowitem:"Hallow Item of your Choice",
 	pet:"One Pet Food of Choice",
 };
+
+var redeem = [
+	slime:"Slime Lock Box",
+	simpleorb:"Simple Orb of Alchemy",
+	advancedorb:"Advanced Orb of Alchemy",
+	hallowitem:"Hallow Item of your Choice",
+	pet:"One Pet Food of Choice",
+];
 var itemrates = { //Percent chance for item drops right now.
 	slime:20,
 	simpleorb:40,
@@ -239,13 +247,13 @@ if(command === prefix + "SPIN" + " " + num){
 	}
 } 
 if(command === prefix + "REDEEM" + " " + num){
-	if(itemdroptable.includes(num)){
+	if(redeem.includes(num) && userData[sender.id + message.guild.id].inventory.indexOf(num) === true){
 		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
 		userData[sender.id + message.guild.id].inventory.splice(position)
 		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
 		message.channel.send("Send Imposto your in-game name to receive your prize");
 		
-	} else if (!itemdroptable.includes(num)){
+	} else if (!redeem.includes(num)){
 		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
 	}
 }
