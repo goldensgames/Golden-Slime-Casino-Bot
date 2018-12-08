@@ -248,6 +248,7 @@ if(command === prefix + "SPIN" + " " + num){
 } 
 if(command === prefix + "REDEEM" + " " + num){
 	if(redeem.includes(num) && userData[sender.id + message.guild.id].inventory.indexOf(num) === true){
+		console.log(num);
 		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
 		userData[sender.id + message.guild.id].inventory.splice(position)
 		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
