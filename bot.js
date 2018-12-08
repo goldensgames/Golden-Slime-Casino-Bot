@@ -112,19 +112,20 @@ if(parts[0] === prefix){
 	let command = message.content.substring(message.content.indexOf("!"), message.content.length);
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
+	let item = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	console.log(num);
 	console.log(command);
 	
-	if(command === prefix + "REDEEM" + " " + num){
+	if(command === prefix + "REDEEM" + " " + item){
 	console.log("Checking Redeem");
-		if(userData[sender.id + message.guild.id].inventory.includes(num)){
+		if(userData[sender.id + message.guild.id].inventory.includes(item)){
 		console.log(num);
-		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
+		var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
 		userData[sender.id + message.guild.id].inventory.splice(position)
 		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
 		message.channel.send("Send Imposto your in-game name to receive your prize");
 		
-		} else if (!userData[sender.id + message.guild.id].inventory.includes(num)){
+		} else if (!userData[sender.id + message.guild.id].inventory.includes(item)){
 		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
 		}
 	}
