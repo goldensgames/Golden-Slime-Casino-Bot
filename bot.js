@@ -1,7 +1,7 @@
 var Discord = require('discord.js');
 var bot = new Discord.Client();
 var fs = require('fs');
-var moment = require('moment'); //The moment package, Lets you view the time
+//var moment = require('moment'); //The moment package, Lets you view the time
 
 //if (bot.user.id === message.author.id) {return}
 
@@ -277,7 +277,7 @@ if(msg === prefix + 'BANK' || msg === prefix + 'ACCOUNT' || msg === prefix + 'IN
   message.channel.send({embed});
 	}
 
-if(msg === prefix + 'DAILY'){
+/*if(msg === prefix + 'DAILY'){
 	if(userData[sender.id + message.guild.id].lastDaily != moment().format('L')) { 	//Checks if the lastdaily object is the same as date
 	   userData[sender.id + message.guild.id].lastDaily = moment().format('L') //Swithces lastdaily with current
 	   userData[sender.id + message.guild.id].tokens += 20; //Adds in the money
@@ -285,7 +285,7 @@ if(msg === prefix + 'DAILY'){
 	} else {
 		message.channel.send(message.author +" You have already claimed your daily  You can collect your next reward " + moment().endOf('day').fromNow() +'.');
 	}
-}
+}*/
 
 if(msg === prefix + 'LOTTERY' || msg === prefix + 'POT'){
 	 message.channel.send(message.author +" The current pot is " + userData.pot + " tokens");
