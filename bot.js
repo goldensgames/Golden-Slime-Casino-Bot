@@ -247,7 +247,7 @@ if(command === prefix + "SPIN" + " " + num){
 	}
 } 
 if(command === prefix + "REDEEM" + " " + num){
-	if(redeem.includes(num) && userData[sender.id + message.guild.id].inventory.indexOf(num) === true){
+	if(redeem.includes(num)){
 		console.log(num);
 		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
 		userData[sender.id + message.guild.id].inventory.splice(position)
