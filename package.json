@@ -4,6 +4,9 @@
   "description": "Running the games",
   "main": "bot.js",
   "author": "Imposto",
+  "scripts":{
+    "start": "node bot.js"
+  },
   "dependencies": {
     "discord.js": "^11.4.2",
     "winston": "^3.1.0"
