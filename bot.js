@@ -305,4 +305,4 @@ bot.on('ready', () => {
 	console.log('The Casino is Live...')
 })
 
-bot.login('NTE5Njc5MDI3NDAxOTgxOTUy.DujABA.VsGjBHtLSqDTNuXAexWErrb4X0g')
+bot.login(process.env.token)
