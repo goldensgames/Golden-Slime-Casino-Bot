@@ -115,6 +115,7 @@ if(parts[0] === prefix){
 	let item = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	console.log(num);
 	console.log(command);
+	console.log(item);
 	
 	if(command === prefix + "REDEEM" + " " + item){
 	console.log("Checking Redeem");
