@@ -1,0 +1,11 @@
+{
+  "name": "greeter-bot",
+  "version": "1.0.0",
+  "description": "Running the games",
+  "main": "bot.js",
+  "author": "Imposto",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "winston": "^3.1.0"
+  }
+}
