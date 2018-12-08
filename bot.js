@@ -1,6 +1,6 @@
-var Discord = require('discord.js');
-var bot = new Discord.Client();
-var fs = require('fs');
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+const fs = require('fs');
 var moment = require('moment'); //The moment package, Lets you view the time
 
 //if (bot.user.id === message.author.id) {return}
