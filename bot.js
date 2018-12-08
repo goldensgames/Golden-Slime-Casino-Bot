@@ -114,6 +114,20 @@ if(parts[0] === prefix){
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	console.log(num);
 	console.log(command);
+	
+	if(command === prefix + "REDEEM" + " " + num){
+	console.log("Checking Redeem");
+		if(userData[sender.id + message.guild.id].inventory.includes(num)){
+		console.log(num);
+		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
+		userData[sender.id + message.guild.id].inventory.splice(position)
+		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
+		message.channel.send("Send Imposto your in-game name to receive your prize");
+		
+		} else if (!userData[sender.id + message.guild.id].inventory.includes(num)){
+		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
+		}
+	}
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
 		for(i = 0; i < times; i++){
@@ -238,20 +252,7 @@ if(command === prefix + "SPIN" + " " + num){
 	} else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
 	message.channel.send(message.author + " You don't have enough tokens to spin.")
 	}
-} 
-if(command === prefix + "REDEEM" + " " + num){
-	console.log("Checking Redeem");
-	if(userData[sender.id + message.guild.id].inventory.includes(num)){
-		console.log(num);
-		var position = userData[sender.id + message.guild.id].inventory.indexOf(num)
-		userData[sender.id + message.guild.id].inventory.splice(position)
-		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
-		message.channel.send("Send Imposto your in-game name to receive your prize");
-		
-	} else if (!userData[sender.id + message.guild.id].inventory.includes(num)){
-		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
-	}
-}
+	
 }	
 
 
