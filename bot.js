@@ -252,7 +252,7 @@ if(command === prefix + "SPIN" + " " + num){
 	} else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
 	message.channel.send(message.author + " You don't have enough tokens to spin.")
 	}
-	
+}
 }	
 
 
