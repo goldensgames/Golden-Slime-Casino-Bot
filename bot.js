@@ -172,11 +172,14 @@ if(parts[0] === prefix){
 	let command = message.content.substring(message.content.indexOf("!"), message.content.length);
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
+	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	
 	console.log(num);
 	console.log(command);
-
-	
+		
+	if(command === prefix + "GIVE" + " " + num + "w" + who){
+		console.log(who);
+	} 
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
 		for(i = 0; i < times; i++){
@@ -372,4 +375,3 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
-
