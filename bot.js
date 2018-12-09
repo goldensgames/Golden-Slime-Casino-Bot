@@ -177,7 +177,7 @@ if(parts[0] === prefix){
 	console.log(num);
 	console.log(command);
 		
-	if(command === prefix + "GIVE" + " " + num + "w" + who){
+	if(command === prefix + "GIVE" + " " + num + "." + who){
 		console.log(who);
 	} 
 	if(command === prefix + "PING" + " " + num){
