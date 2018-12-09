@@ -179,8 +179,8 @@ if(parts[0] === prefix){
 	console.log(command);
 		
 	if(command === prefix + "GIVE" + " " + amount + "." + who){
-		console.log(who);
-		console.log(amount);
+		console.log(who + "who");
+		console.log(amount + "amount");
 	} 
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
