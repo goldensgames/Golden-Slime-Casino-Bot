@@ -191,7 +191,7 @@ if(command === prefix + "SPIN" + " " + num){
 				userData[sender.id + message.guild.id].tokens = userData[sender.id + message.guild.id].tokens - gamblecost;
 				var chance =Math.floor(Math.random() * (+max - +min)) + +min;
 				console.log(chance);
-			if (chance <= rates.high){
+			if (chance <= rates.high && chance > rates.itemdrop){
 		
 				var random =Math.floor(Math.random() * (+highmax - +highmin)) + +highmin;
 				userData[sender.id + message.guild.id].tokens = userData[sender.id + message.guild.id].tokens + random;
