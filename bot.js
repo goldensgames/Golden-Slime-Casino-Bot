@@ -184,7 +184,10 @@ if(parts[0] === prefix){
 	console.log(who + " who");
 	console.log(amount + " amount");
 	if(command === prefix + "GIVE" + " " + amount + "." + who){
-		console.log("Giving Tokens");
+		console.log("Giving " + amount + " Tokens");
+		let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length);
+		var count = amount.parseInt(amount);
+		userData[id].tokens += amount;
 	} 
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
@@ -381,3 +384,4 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
+
