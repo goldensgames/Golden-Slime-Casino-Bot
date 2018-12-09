@@ -173,12 +173,14 @@ if(parts[0] === prefix){
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
+	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf(" ")+2);
 	
 	console.log(num);
 	console.log(command);
 		
-	if(command === prefix + "GIVE" + " " + num + "." + who){
+	if(command === prefix + "GIVE" + " " + amount + "." + who){
 		console.log(who);
+		console.log(amount);
 	} 
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
