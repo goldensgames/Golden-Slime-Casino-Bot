@@ -114,6 +114,7 @@ if(msg === prefix + 'ME' && sender.id + message.guild.id === "198866287470837760
 if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
 	for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
+		console.log("Checking Inventory");
 		var item = userData[sender.id + message.guild.id].inventory[i];
 		var found = redeem.includes(item)
 			if(found === true){
