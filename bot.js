@@ -182,6 +182,7 @@ if(parts[0] === prefix){
 }	
 	}
 if(command === prefix + "SPIN" + " " + num){
+		console.log(rates.itemdrop);
 		if(userData[sender.id + message.guild.id].tokens >= gamblecost * num){
 			var old = userData[sender.id + message.guild.id].tokens;
 			for(i = 0; i < num; i++){
@@ -246,11 +247,11 @@ if(command === prefix + "SPIN" + " " + num){
     userData[sender.id + message.guild.id].tokens + " tokens left.")
 	
   }
-if(chance <= rates.itemdrop){
-	if(itemgets.length != 0){
+	if(chance <= rates.itemdrop){
+		if(itemgets.length != 0){
 		embed.addField("You got an item!", itemgets)
-	}	 
-}
+		}	 
+	}
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
@@ -262,10 +263,10 @@ if(chance <= rates.itemdrop){
   //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
   message.channel.send({embed});
-	} else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
-	message.channel.send(message.author + " You don't have enough tokens to spin.")
+			}  else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
+			message.channel.send(message.author + " You don't have enough tokens to spin.")
+		}
 	}
-}
 }	
 
 
@@ -334,3 +335,4 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
+
