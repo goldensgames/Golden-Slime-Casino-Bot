@@ -131,7 +131,7 @@ if(msg === prefix + 'REDEEM'){
 	userData[sender.id + message.guild.id].inventory = items;
 	const embed = new Discord.RichEmbed()
   //.setTitle("Your Account")
-  .setAuthor(message.author.username +"'s Redemption")
+  .setAuthor(message.author.username +"'s Redemption, Contact Imposto to claim your items in-game!")
   /*
    * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
    */
