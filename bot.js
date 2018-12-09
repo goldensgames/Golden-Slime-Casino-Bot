@@ -202,6 +202,7 @@ if(command === prefix + "SPIN" + " " + num){
 				userData[sender.id + message.guild.id].tokens = userData[sender.id + message.guild.id].tokens + random;	
 			} else if (chance <= rates.itemdrop){
 				var itemdrop =Math.floor(Math.random() * (+max - +min)) + +min;
+				console.log("Item Dropped")
 				if(itemdrop <= itemrates.slime){
 						
 						userData[sender.id + message.guild.id].inventory.push(itemdroptable.slime);
