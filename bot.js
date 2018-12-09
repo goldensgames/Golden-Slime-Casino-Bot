@@ -189,7 +189,7 @@ if(parts[0] === prefix){
 		var count = parseInt(amount);
 		console.log(id);
 		console.log(sender.id + message.guild.id);
-		userData[id].tokens += count;
+		userData[id + message.guild.id].tokens += count;
 		console.log("Success");
 	} 
 	if(command === prefix + "PING" + " " + num){
