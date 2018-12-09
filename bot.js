@@ -186,7 +186,7 @@ if(parts[0] === prefix){
 	if(command === prefix + "GIVE" + " " + amount + "." + who){
 		console.log("Giving " + amount + " Tokens");
 		let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length);
-		var count = amount.parseInt(amount);
+		var count = parseInt(amount);
 		userData[id].tokens += count;
 	} 
 	if(command === prefix + "PING" + " " + num){
