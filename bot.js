@@ -113,22 +113,52 @@ if(msg === prefix + 'ME' && sender.id + message.guild.id === "198866287470837760
 }	
 if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
+	var redemption = [];
 	for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
 		console.log("Checking Inventory");
 		var item = userData[sender.id + message.guild.id].inventory[i];
 		var found = redeem.includes(item)
 			if(found === true){
 				console.log("Item Found");
-				
-				message.channel.send(message.author + " Congratulations on your redemption of " + item + " private message Imposto to claim your prize")
+				redemption.push(item);
 				console.log(userData[sender.id + message.guild.id].inventory)
 			} else if (found === false){
 				console.log(message.author + " That item is not in your inventory")
 		}
 	
 	}
-	userData[sender.id + message.guild.id].inventory = items;
 	
+	userData[sender.id + message.guild.id].inventory = items;
+	const embed = new Discord.RichEmbed()
+  //.setTitle("Your Account")
+  .setAuthor(message.author.username +"'s Redemption")
+  /*
+   * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
+   */
+  .setColor(0xF1C40F)
+  //.setDescription("Welcome to your account, " + message.author.username)
+  .setFooter("Have Fun!")
+  //.setImage("http://i.imgur.com/yVpymuV.png")
+  //.setThumbnail("https://imgur.com/EJQmL0g")
+  /*
+   * Takes a Date object, defaults to current date.
+   */
+  .setTimestamp()
+  //.setURL("https://discord.js.org/#/docs/main/indev/class/RichEmbed")
+  .addField("Redemption", redemption)
+	
+	
+  /*
+   * Inline fields may not display as inline if the thumbnail and/or image is too big.
+   */
+  //.addField("Inline Field", "They can also be inline.", true)
+  /*
+   * Blank field, useful to create some space.
+   */
+  //.addBlankField(true)
+  //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
+ 
+  message.channel.send({embed});
 }
 	
 //Splits command up so you can do multiple uses
