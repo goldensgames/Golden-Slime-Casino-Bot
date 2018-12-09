@@ -31,7 +31,6 @@ var itemdroptable = {
 };
 
 var redeem = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"];
-var redeem2 = {"Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"};
 
 var itemrates = { //Percent chance for item drops right now.
 	slime:20,
