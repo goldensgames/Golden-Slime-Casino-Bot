@@ -63,7 +63,7 @@ bot.on('message', message => {
 	
 	if (!userData[sender.id + message.guild.id]) userData[sender.id + message.guild.id] = {}
 	
-	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 100;
+	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 50;
     if (userData[sender.id + message.guild.id].inventory === undefined) userData[sender.id + message.guild.id].inventory = items;
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
@@ -188,7 +188,7 @@ if(command === prefix + "SPIN" + " " + num){
 				userData[sender.id + message.guild.id].tokens = userData[sender.id + message.guild.id].tokens - gamblecost;
 				var chance =Math.floor(Math.random() * (+max - +min)) + +min;
 				console.log(chance);
-			if (chance <= rates.high && chance >= rates.itemdrop){
+			if (chance <= rates.high){
 		
 				var random =Math.floor(Math.random() * (+highmax - +highmin)) + +highmin;
 				userData[sender.id + message.guild.id].tokens = userData[sender.id + message.guild.id].tokens + random;
