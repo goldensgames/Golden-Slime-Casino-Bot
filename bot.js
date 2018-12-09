@@ -108,7 +108,9 @@ if(msg === prefix + 'CLAIM'){
 		message.channel.send("You do not have this lottery ticket")
 	}
 }
-	
+if(msg === prefix + 'ME' && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+  	userData[sender.id + message.guild.id].tokens += 50;
+}	
 if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
 	for(i = 0; i < redeem.length; i++){
