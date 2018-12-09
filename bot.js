@@ -113,14 +113,13 @@ if(msg === prefix + 'ME' && sender.id + message.guild.id === "198866287470837760
 }	
 if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
-	for(i = 0; i < redeem.length; i++){
-		var item = redeem[i];
-		var found = userData[sender.id + message.guild.id].inventory.includes(item)
+	for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
+		var item = userData[sender.id + message.guild.id].inventory[i];
+		var found = userData[sender.id + message.guild.id].redeem.includes(item)
 			if(found === true){
-				var amount = countInArray(userData[sender.id + message.guild.id].inventory, item);
 				var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
-				userData[sender.id + message.guild.id].inventory.pop();
-				message.channel.send(message.author + " Congratulations on your redemption of " + item + " x" + amount + " private message Imposto to claim your prize")
+				userData[sender.id + message.guild.id].inventory.splice(position);
+				message.channel.send(message.author + " Congratulations on your redemption of " + item + " private message Imposto to claim your prize")
 				console.log(userData[sender.id + message.guild.id].inventory)
 			} else if (found === false){
 				console.log(message.author + " That item is not in your inventory")
