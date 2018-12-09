@@ -188,7 +188,7 @@ if(parts[0] === prefix){
 		let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
 		var count = parseInt(amount);
 		console.log(id);
-		userData[get].tokens += count;
+		userData[id].tokens += count;
 		console.log("Success");
 	} 
 	if(command === prefix + "PING" + " " + num){
