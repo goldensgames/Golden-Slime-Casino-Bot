@@ -31,6 +31,7 @@ var itemdroptable = {
 };
 
 var redeem = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"];
+var redeem2 = {"Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"};
 
 var itemrates = { //Percent chance for item drops right now.
 	slime:20,
@@ -115,7 +116,7 @@ if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
 	for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
 		var item = userData[sender.id + message.guild.id].inventory[i];
-		var found = userData[sender.id + message.guild.id].redeem.includes(item)
+		var found = userData[sender.id + message.guild.id].redeem2.includes(item)
 			if(found === true){
 				var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
 				userData[sender.id + message.guild.id].inventory.splice(position);
