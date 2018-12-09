@@ -6,7 +6,7 @@ var moment = require('moment'); //The moment package, Lets you view the time
 //if (bot.user.id === message.author.id) {return}
 
 let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
-var items = ["Golden Slime Co. Membership"];
+var items = ["C.U.B.E Club Membership"];
 
 
 var winningnumber;
@@ -127,8 +127,8 @@ if(msg === prefix + 'REDEEM'){
 		}
 	
 	}
-	userData[sender.id + message.guild.id].inventory.splice();
-	userData[sender.id + message.guild.id].inventory.push("C.U.B.E Club Membership");
+	userData[sender.id + message.guild.id].inventory = items;
+	
 }
 	
 //Splits command up so you can do multiple uses
