@@ -208,7 +208,7 @@ if(command === prefix + "SPIN" + " " + num){
 						userData[sender.id + message.guild.id].inventory.push(itemdroptable.slime);
 						itemgets.push(itemdroptable.slime);
 					} else if (itemdrop > itemrates.slime && itemdrop <= itemrates.simpleorb){
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable.simpleorb);
+					userData[sender.id + message.guild.id].inventory.push(itemdroptable.simpleorb);
 						itemgets.push(itemdroptable.simpleorb);
 					} else if (itemdrop > itemrates.simpleorb && itemdrop <= itemrates.advancedorb){
 						userData[sender.id + message.guild.id].inventory.push(itemdroptable.advancedorb);
@@ -248,11 +248,10 @@ if(command === prefix + "SPIN" + " " + num){
     userData[sender.id + message.guild.id].tokens + " tokens left.")
 	
   }
-	if(chance <= rates.itemdrop){
-		if(itemgets.length != 0){
-		embed.addField("You got an item!", itemgets)
-		}	 
-	}
+  if(itemgets.length > 0){
+	embed.addField("You got an item!", itemgets)
+   }	 
+	
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
