@@ -119,7 +119,7 @@ if(msg === prefix + 'REDEEM'){
 		var found = redeem.includes(item)
 			if(found === true){
 				console.log("Item Found");
-				userData[sender.id + message.guild.id].inventory.splice(i, 1);
+				
 				message.channel.send(message.author + " Congratulations on your redemption of " + item + " private message Imposto to claim your prize")
 				console.log(userData[sender.id + message.guild.id].inventory)
 			} else if (found === false){
@@ -127,7 +127,8 @@ if(msg === prefix + 'REDEEM'){
 		}
 	
 	}
-	
+	userData[sender.id + message.guild.id].inventory.splice();
+	userData[sender.id + message.guild.id].inventory.push("C.U.B.E Club Membership");
 }
 	
 //Splits command up so you can do multiple uses
