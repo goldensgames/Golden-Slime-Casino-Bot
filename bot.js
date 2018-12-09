@@ -118,10 +118,10 @@ if(msg === prefix + 'REDEEM'){
 		var found = userData[sender.id + message.guild.id].inventory.includes(item)
 			if(found === true){
 				var amount = countInArray(userData[sender.id + message.guild.id].inventory, item);
-				//var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
-				userData[sender.id + message.guild.id].inventory.splice(item)
+				var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
+				userData[sender.id + message.guild.id].inventory.splice(position)
 				message.channel.send(message.author + " Congratulations on your redemption of " + item + " x" + amount + " private message Imposto to claim your prize")
-				
+				console.log(userData[sender.id + message.guild.id].inventory)
 			} else if (found === false){
 				console.log(message.author + " That item is not in your inventory")
 		}
