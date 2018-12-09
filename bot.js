@@ -178,8 +178,8 @@ if(parts[0] === prefix){
 	//console.log(num);
 	console.log(command + " command");
 		
-	who.toUpperCase();
-	amount.toUpperCase();
+	who = who.toUpperCase();
+	amount = amount.toUpperCase();
 	
 	console.log(who + " who");
 	console.log(amount + " amount");
