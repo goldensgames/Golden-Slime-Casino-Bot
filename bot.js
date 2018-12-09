@@ -131,7 +131,8 @@ if(msg === prefix + 'REDEEM'){
 	}
 	
 	userData[sender.id + message.guild.id].inventory = other;
-	const embed = new Discord.RichEmbed()
+	if(redemption.length != 0){
+	   const embed = new Discord.RichEmbed()
   //.setTitle("Your Account")
   .setAuthor(message.author.username +"'s Redemption, Contact Imposto to claim your items in-game!")
   /*
@@ -161,6 +162,9 @@ if(msg === prefix + 'REDEEM'){
   //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
   message.channel.send({embed});
+	} else if (redemption.length === 0){
+	 message.channel.send(message.author + " You don't have any items to redeem");
+	}	   	
 }
 	
 //Splits command up so you can do multiple uses
