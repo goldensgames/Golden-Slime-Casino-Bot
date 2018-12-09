@@ -30,6 +30,8 @@ var itemdroptable = {
 	pet:"One Pet Food of Choice",
 };
 
+var redeem = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"];
+
 var itemrates = { //Percent chance for item drops right now.
 	slime:20,
 	simpleorb:40,
@@ -94,7 +96,7 @@ if(msg === prefix + 'DRAW' && sender.id + message.guild.id === "1988662874708377
 //Destroys an item.(ADMIN COMMAND)TODO:Actually program this
 
 //Claim a winning ticket
-if(msg === prefix + 'CLAIM' ){
+if(msg === prefix + 'CLAIM'){
 	var found = userData[sender.id + message.guild.id].inventory.includes("Lottery Ticket: #"+winningnumber)
 	if(found === true){
 		var position = userData[sender.id + message.guild.id].inventory.indexOf("Lottery Ticket: #"+winningnumber)
@@ -106,30 +108,34 @@ if(msg === prefix + 'CLAIM' ){
 		message.channel.send("You do not have this lottery ticket")
 	}
 }
-
+	
+if(msg === prefix + 'REDEEM'){
+	console.log("Checking Redeem");
+	for(i = 0; i < redeem.length; i++){
+		var item = redeem[i];
+		var found = userData[sender.id + message.guild.id].inventory.includes(item)
+			if(found === true){
+				var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
+				userData[sender.id + message.guild.id].inventory.splice(position)
+				message.channel.send("Congratulations on your redemption of " + item + " private message Imposto to claim your prize")
+			} else if (found === false){
+				message.channel.send("You do not have any claimable items")
+		}
+	
+	}
+	
+}
+	
 //Splits command up so you can do multiple uses
 if(parts[0] === prefix){
 	let command = message.content.substring(message.content.indexOf("!"), message.content.length);
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
-	let item = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
+	
 	console.log(num);
 	console.log(command);
-	console.log(item);
+
 	
-	if(command === prefix + "REDEEM" + " " + item){
-	console.log("Checking Redeem");
-		if(userData[sender.id + message.guild.id].inventory.includes(item)){
-		console.log(num);
-		var position = userData[sender.id + message.guild.id].inventory.indexOf(item)
-		userData[sender.id + message.guild.id].inventory.splice(position)
-		message.channel.send(message.author + " You have redeemed " + num + " for the in-game item equivalent");
-		message.channel.send("Send Imposto your in-game name to receive your prize");
-		
-		} else if (!userData[sender.id + message.guild.id].inventory.includes(item)){
-		message.channel.send(message.author + "You do not have that item in your inventory(check your spelling)");
-		}
-	}
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
 		for(i = 0; i < times; i++){
