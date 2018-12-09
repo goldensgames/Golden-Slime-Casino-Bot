@@ -118,7 +118,7 @@ if(msg === prefix + 'REDEEM'){
 		var item = userData[sender.id + message.guild.id].inventory[i];
 		var found = redeem.includes(item)
 			if(found === true){
-				
+				console.log("Item Found");
 				userData[sender.id + message.guild.id].inventory.splice(i);
 				message.channel.send(message.author + " Congratulations on your redemption of " + item + " private message Imposto to claim your prize")
 				console.log(userData[sender.id + message.guild.id].inventory)
