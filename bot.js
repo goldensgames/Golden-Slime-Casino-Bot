@@ -114,6 +114,7 @@ if(msg === prefix + 'ME' && sender.id + message.guild.id === "198866287470837760
 if(msg === prefix + 'REDEEM'){
 	console.log("Checking Redeem");
 	var redemption = [];
+	var other = [];
 	for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
 		console.log("Checking Inventory");
 		var item = userData[sender.id + message.guild.id].inventory[i];
@@ -123,12 +124,13 @@ if(msg === prefix + 'REDEEM'){
 				redemption.push(item);
 				console.log(userData[sender.id + message.guild.id].inventory)
 			} else if (found === false){
-				console.log(message.author + " That item is not in your inventory")
+				other.push(item);
+				console.log(message.author + " Different Item...")
 		}
 	
 	}
 	
-	userData[sender.id + message.guild.id].inventory = items;
+	userData[sender.id + message.guild.id].inventory = other;
 	const embed = new Discord.RichEmbed()
   //.setTitle("Your Account")
   .setAuthor(message.author.username +"'s Redemption, Contact Imposto to claim your items in-game!")
