@@ -242,12 +242,13 @@ if(command === prefix + "SPIN" + " " + num){
 	 var total = old - userData[sender.id + message.guild.id].tokens;
 		embed.addField("You lost " + total + " tokens",
     userData[sender.id + message.guild.id].tokens + " tokens left.")
-	if(chance <= rates.itemdrop){
-		if(itemgets.length != 0){
-				embed.addField("You got an item!", itemgets)
-		}	 
-	}
+	
   }
+if(chance <= rates.itemdrop){
+	if(itemgets.length != 0){
+		embed.addField("You got an item!", itemgets)
+	}	 
+}
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
