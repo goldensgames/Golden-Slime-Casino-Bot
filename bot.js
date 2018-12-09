@@ -185,7 +185,7 @@ if(parts[0] === prefix){
 	console.log(amount + " amount");
 	if(command === prefix + "GIVE" + " " + amount + "." + who){
 		console.log("Giving " + amount + " Tokens");
-		let id = who.content.substring(who.content.indexOf("@") + 1, who.content.length);
+		let id = (who.content.indexOf("@") + 1, who.content.length);
 		var count = parseInt(amount);
 		console.log(id);
 		userData[id].tokens += count;
