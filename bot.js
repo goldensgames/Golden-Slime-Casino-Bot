@@ -189,13 +189,17 @@ if(parts[0] === prefix){
 	//Give ADMIN Command!
 	
 	if(command === prefix + "ADD" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		console.log("Checking for Add");
+		
 		if(itemdroptable.includes(num)){
 			message.channel.send("That item is already in the drop table");
 		} else {
+			console.log("pushing");
 			itemdroptable.push(num)
 			redeem.push(num)
 			message.channel.send("Item successfully added");
 		}
+		console.log(itemdroptable);
 	}
 	if(command === prefix + "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(num) && redeem.includes(num)){
