@@ -390,7 +390,7 @@ if(userData[sender.id + message.guild.id].tokens <= 0){
 fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
 	if(err) console.error(err);
 })
-})
+}})
 
 bot.on('ready', () => {
 
