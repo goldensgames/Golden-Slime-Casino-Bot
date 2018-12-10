@@ -171,6 +171,7 @@ if(parts[0] === prefix){
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
+	let item = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf(" ")+2);
 	
 	//console.log(num);
@@ -188,23 +189,19 @@ if(parts[0] === prefix){
 	console.log(amount + " amount");
 	//Give ADMIN Command!
 	
-	if(command === prefix + "ADD" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
-		console.log("Checking for Add");
-		
-		if(itemdroptable.includes(num)){
+	if(command === prefix + "ADD" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(itemdroptable.includes(item)){
 			message.channel.send("That item is already in the drop table");
 		} else {
-			console.log("pushing");
-			itemdroptable.push(num)
-			redeem.push(num)
+			itemdroptable.push(item)
+			redeem.push(item)
 			message.channel.send("Item successfully added");
 		}
-		console.log(itemdroptable);
 	}
-	if(command === prefix + "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
-		if(itemdroptable.includes(num) && redeem.includes(num)){
-			var position = itemdroptable.indexOf(num);
-			var index = redeem.indexOf(num);
+	if(command === prefix + "REMOVE" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(itemdroptable.includes(item) && redeem.includes(item)){
+			var position = itemdroptable.indexOf(item);
+			var index = redeem.indexOf(item);
 			itemdroptable.splice(position);
 			redeem.splice(index);
 		}	
@@ -288,7 +285,8 @@ if(command === prefix + "SPIN" + " " + num){
 						itemgets.push(itemdroptable[f]);
 					}
 				}		
-	}
+			}
+			}
 	const embed = new Discord.RichEmbed()
   .setTitle("Casino Wheel")
   .setAuthor(message.author.username)
@@ -330,8 +328,8 @@ if(command === prefix + "SPIN" + " " + num){
   //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
   message.channel.send({embed});
-			}
-		}  else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
+			
+		} else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
 			message.channel.send(message.author + " You don't have enough tokens to spin.")
 	}
 }	
