@@ -188,7 +188,7 @@ if(parts[0] === prefix){
 	console.log(amount + " amount");
 	//Give ADMIN Command!
 	
-	if(command === prefix "ADD" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+	if(command === prefix + "ADD" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(num)){
 			message.channel.send("That item is already in the drop table");
 		} else {
@@ -197,7 +197,7 @@ if(parts[0] === prefix){
 			message.channel.send("Item successfully added");
 		}
 	}
-	if(command === prefix "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+	if(command === prefix + "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(num) && redeem.includes(num){
 			var position = itemdroptable.indexOf(num);
 			var index = redeem.indexOf(num);
