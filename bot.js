@@ -63,6 +63,11 @@ bot.on('message', message => {
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
 
+	
+	fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+	if(err) console.error(err);
+	})
+	
 //Draws a winning ticket, will be a two times daily event.(ADMIN COMMAND)
 if(msg === prefix + 'DRAW' && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 	//Drawing Number
@@ -219,7 +224,7 @@ if(parts[0] === prefix){
 		userData[id + message.guild.id].tokens += count;
 		message.channel.send("Tokens successfully given");
 		console.log("Success");
-	} 
+	}
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
 		for(i = 0; i < times; i++){
