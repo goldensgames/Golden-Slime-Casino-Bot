@@ -22,13 +22,8 @@ var rates = {
 	itemdrop:10, //TODO: Trading system.
 	high:40 //Win Rate
 };
-var itemdroptable = {
-	slime:"Slime Lock Box",
-	simpleorb:"Simple Orb of Alchemy",
-	advancedorb:"Advanced Orb of Alchemy",
-	hallowitem:"Hallow Item of your Choice",
-	pet:"One Pet Food of Choice",
-};
+var itemdroptable = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice",
+];
 
 var redeem = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"];
 
@@ -96,6 +91,9 @@ if(msg === prefix + 'DRAW' && sender.id + message.guild.id === "1988662874708377
 //Destroys an item.(ADMIN COMMAND)TODO:Actually program this
 
 //Claim a winning ticket
+if(msg === prefix + "CLEANYES"){
+	userData[sender.id + message.guild.id].inventory = items;
+}
 if(msg === prefix + 'CLAIM'){
 	var found = userData[sender.id + message.guild.id].inventory.includes("Lottery Ticket: #"+winningnumber)
 	if(found === true){
@@ -178,18 +176,43 @@ if(parts[0] === prefix){
 	//console.log(num);
 	console.log(command + " command");
 		
+		
+		
+		
+		
+		
 	who = who.toUpperCase();
 	amount = amount.toUpperCase();
 	
 	console.log(who + " who");
 	console.log(amount + " amount");
-	if(command === prefix + "GIVE" + " " + amount + "." + who){
+	//Give ADMIN Command!
+	
+	if(command === prefix "ADD" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(itemdroptable.includes(num)){
+			message.channel.send("That item is already in the drop table");
+		} else {
+			itemdroptable.push(num)
+			redeem.push(num)
+			message.channel.send("Item successfully added");
+		}
+	}
+	if(command === prefix "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(itemdroptable.includes(num) && redeem.includes(num){
+			var position = itemdroptable.indexOf(num);
+			var index = redeem.indexOf(num);
+			itemdroptable.splice(position);
+			redeem.splice(index);
+		}	
+	}
+	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
 		let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
 		var count = parseInt(amount);
 		console.log(id);
 		console.log(sender.id + message.guild.id);
 		userData[id + message.guild.id].tokens += count;
+		message.channel.send("Tokens successfully given");
 		console.log("Success");
 	} 
 	if(command === prefix + "PING" + " " + num){
@@ -255,24 +278,12 @@ if(command === prefix + "SPIN" + " " + num){
 			} else if (chance <= rates.itemdrop){
 				var itemdrop =Math.floor(Math.random() * (+max - +min)) + +min;
 				console.log("Item Dropped")
-				if(itemdrop <= itemrates.slime){
-						
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable.slime);
-						itemgets.push(itemdroptable.slime);
-					} else if (itemdrop > itemrates.slime && itemdrop <= itemrates.simpleorb){
-					userData[sender.id + message.guild.id].inventory.push(itemdroptable.simpleorb);
-						itemgets.push(itemdroptable.simpleorb);
-					} else if (itemdrop > itemrates.simpleorb && itemdrop <= itemrates.advancedorb){
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable.advancedorb);
-						itemgets.push(itemdroptable.advancedorb);
-					} else if (itemdrop > itemrates.advancedorb&& itemdrop <= itemrates.hallowitem){
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable.hallowitem);
-						itemgets.push(itemdroptable.hallowitem);
-					} else if (itemdrop > itemrates.hallowitem){
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable.pet);
-						itemgets.push(itemdroptable.pet);
+				var yourdrop =Math.floor(Math.random() * (+itemdroptable.length - +0)) + +0;
+				for(f = 0; f < itemdroptable.length; f++){
+					if(f === yourdrop){
+						itemgets.push(itemdroptable[f]);
 					}
-			}
+				}		
 	}
 	const embed = new Discord.RichEmbed()
   .setTitle("Casino Wheel")
@@ -387,4 +398,3 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
-
