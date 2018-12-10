@@ -326,9 +326,9 @@ if(command === prefix + "SPIN" + " " + num){
   //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
   message.channel.send({embed});
-			}  else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
+			}
+		}  else if (userData[sender.id + message.guild.id].tokens < gamblecost) {
 			message.channel.send(message.author + " You don't have enough tokens to spin.")
-		}
 	}
 }	
 
