@@ -49,7 +49,7 @@ bot.on('message', message => {
 	
 	let sender = message.author;
 	let msg = message.content.toUpperCase();
-	let prefix = '>'
+	let prefix = '!'
 	
 	let parts = message.content.split("");
 	let num = parts[5];
@@ -172,7 +172,7 @@ if(msg === prefix + 'REDEEM'){
 	
 //Splits command up so you can do multiple uses
 if(parts[0] === prefix){
-	let command = message.content.substring(message.content.indexOf(">"), message.content.length);
+	let command = message.content.substring(message.content.indexOf("!"), message.content.length);
 	command = command.toUpperCase();
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
