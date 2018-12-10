@@ -195,7 +195,7 @@ if(parts[0] === prefix){
 		} else {
 			itemdroptable.push(item)
 			redeem.push(item)
-			message.channel.send("Item successfully added");
+			message.channel.send("Item Successfully Added");
 		}
 	}
 	if(command === prefix + "REMOVE" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
@@ -204,7 +204,11 @@ if(parts[0] === prefix){
 			var index = redeem.indexOf(item);
 			itemdroptable.splice(position);
 			redeem.splice(index);
+			message.channel.send("Item Successfully Removed");
 		}	
+	}
+	if(command === prefix + "TABLE"){
+		message.channel.send(itemdroptable);
 	}
 	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
