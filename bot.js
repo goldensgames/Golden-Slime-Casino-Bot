@@ -287,6 +287,7 @@ if(command === prefix + "SPIN" + " " + num){
 				for(f = 0; f < itemdroptable.length; f++){
 					if(f === yourdrop){
 						itemgets.push(itemdroptable[f]);
+						userData[sender.id + message.guild.id].inventory.push(itemdroptable[f]);
 					}
 				}		
 			}
