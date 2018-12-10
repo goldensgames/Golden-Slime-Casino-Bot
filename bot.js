@@ -198,7 +198,7 @@ if(parts[0] === prefix){
 		}
 	}
 	if(command === prefix + "REMOVE" + " " + num && sender.id + message.guild.id === "198866287470837760504453118835032066"){
-		if(itemdroptable.includes(num) && redeem.includes(num){
+		if(itemdroptable.includes(num) && redeem.includes(num)){
 			var position = itemdroptable.indexOf(num);
 			var index = redeem.indexOf(num);
 			itemdroptable.splice(position);
