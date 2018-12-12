@@ -240,10 +240,18 @@ if(parts[0] === prefix){
 					}
 				}
 				userData[sender.id + message.guild.id].inventory.splice("Luck Potion");
-		
-				used.splice(used.length);
-				userData[sender.id + message.guild.id].inventory.push(other);
-				userData[sender.id + message.guild.id].inventory.push(used);
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(used[i]);
+				}
+				
+				
 				
 				
 				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
