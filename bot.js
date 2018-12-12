@@ -9,6 +9,17 @@ let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 var items = ["C.U.B.E Club Membership"];
 
 
+/*Update CheckList
+Luck Stat and Luck Potion - Completed
+Redemption Shop and Item Drop Rework -
+More organized inventory - Scrapped
+Daily Reward Buff - 
+Zen Potion - Compelted
+
+
+
+*/
+
 var winningnumber;
 //Casino Wheel Values(Change these for different effects)
 var gamblecost = 10; //How much it costs for 1 spin.
@@ -19,19 +30,18 @@ var highmax = gamblecost * 2; //Highest Roll on a win
 var max = 100 //Percent Chances
 var min = 0
 var rates = {
-	itemdrop:10, //TODO: Trading system.
+	itemdrop:10, //Item Drop Rate
 	high:40 //Win Rate
 };
-var itemdroptable = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice",
-];
+var itemdroptable = ["Slime Lock Box","Luck Potion","Zen Potion"];
 
-var redeem = ["Slime Lock Box","Simple Orb of Alchemy","Advanced Orb of Alchemy","Hallow Item of your Choice","One Pet Food of Choice"];
+var redeem = ["Slime Lock Box"];
 
-var itemrates = { //Percent chance for item drops right now.
-	slime:20,
-	simpleorb:40,
-	advancedorb:60,
-	hallowitem:80,
+var usable = ["Luck Potion","Zen Potion"];
+
+var luckPotion = {
+	lowend: -10,
+	highend: 10
 };
 
 function countInArray(array, what) {
@@ -60,8 +70,30 @@ bot.on('message', message => {
 	
 	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 50;
     if (userData[sender.id + message.guild.id].inventory === undefined) userData[sender.id + message.guild.id].inventory = items;
+	if (userData[sender.id + message.guild.id].luck === undefined) userData[sender.id + message.guild.id].luck = 0;
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
+	
+	//Applying Luck Stat, Requirements(Should affect item drop rates, and the best possible wins)
+	//Luck should affect all possible drops on the casino wheel, it can get really bad...
+	
+	if(userData[sender.id + message.guild.id].luck < 0){
+		lowmin += userData[sender.id + message.guild.id].luck;
+		lowhigh += userData[sender.id + message.guild.id].luck;
+	}
+	if(userData[sender.id + message.guild.id].luck > 0 {
+		highmin += userData[sender.id + message.guild.id].luck;
+		highmax += userData[sender.id + message.guild.id].luck * 2;
+	}
+
+	rates.itemdrop += userData[sender.id + message.guild.id].luck;
+	
+	if(rates.itemdrop <= 1){ //Balancing Item Drop Rates
+		rates.itemdrop = 1;
+	}
+	if(rates.itemdrop >= rates.high){
+		rates.itemdrop = rates.high - 1;
+	}
 	
 //Draws a winning ticket, will be a two times daily event.(ADMIN COMMAND)
 if(msg === prefix + 'DRAW' && sender.id + message.guild.id === "198866287470837760504453118835032066"){
@@ -174,12 +206,13 @@ if(parts[0] === prefix){
 	let item = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf(" ")+2);
 	
-	//console.log(num);
 	console.log(command + " command");
+	console.log(num + " num");	
 		
 		
-		
-		
+	//Applying Luck Stat to Percent Chance...
+	
+	
 		
 		
 	who = who.toUpperCase();
@@ -187,8 +220,25 @@ if(parts[0] === prefix){
 	
 	console.log(who + " who");
 	console.log(amount + " amount");
-	//Give ADMIN Command!
 	
+	
+	//Using Usables
+	if(command === prefix + "USE" + " " + num){
+		if(usable.includes(num)){
+			if(num === "Luck Potion"){
+				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
+				userData[sender.id + message.guild.id].luck += change;
+				console.log(userData[sender.id + message.guild.id].luck);
+				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
+			}
+			if(num === "Zen Potion"){
+				userData[sender.id + message.guild.id].luck = 0;
+				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
+			}
+		} else if(!usable.incudes(num)){
+			message.channel.send(message.author + " You do not have that Usable, check your spelling.")
+		}
+	}
 	if(command === prefix + "ADD" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(item)){
 			message.channel.send("That item is already in the drop table");
@@ -197,13 +247,12 @@ if(parts[0] === prefix){
 			redeem.push(item)
 			message.channel.send("Item Successfully Added");
 		}
-	}
+	}	
 	if(command === prefix + "REMOVE" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(item) && redeem.includes(item)){
-			var position = itemdroptable.indexOf(item);
-			var index = redeem.indexOf(item);
-			itemdroptable.splice(position);
-			redeem.splice(index);
+			//Removes the item from the drop table.
+			itemdroptable.splice(item);
+			redeem.splice(item);
 			message.channel.send("Item Successfully Removed");
 		}	
 	}
@@ -378,7 +427,7 @@ if(msg === prefix + 'BANK' || msg === prefix + 'ACCOUNT' || msg === prefix + 'IN
 
 if(msg === prefix + 'DAILY'){
 	if(userData[sender.id + message.guild.id].lastDaily != moment().format('L')) { 	//Checks if the lastdaily object is the same as date
-	   userData[sender.id + message.guild.id].lastDaily = moment().format('L') //Swithces lastdaily with current
+	   userData[sender.id + message.guild.id].lastDaily = moment().format('L') //Switches last daily with current
 	   userData[sender.id + message.guild.id].tokens += 20; //Adds in the money
 	   message.channel.send(message.author +" Daily Claimed for 20 tokens");
 	} else {
@@ -405,3 +454,4 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
+
