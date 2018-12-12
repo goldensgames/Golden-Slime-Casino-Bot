@@ -81,7 +81,7 @@ bot.on('message', message => {
 		lowmin += userData[sender.id + message.guild.id].luck;
 		lowhigh += userData[sender.id + message.guild.id].luck;
 	}
-	if(userData[sender.id + message.guild.id].luck > 0 {
+	if(userData[sender.id + message.guild.id].luck > 0){
 		highmin += userData[sender.id + message.guild.id].luck;
 		highmax += userData[sender.id + message.guild.id].luck * 2;
 	}
