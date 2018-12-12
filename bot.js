@@ -279,7 +279,7 @@ if(parts[0] === prefix){
 				}
 				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
 			}
-		} else if(usable.incudes(item) === false){
+		} else if(usable.includes(item) === false){
 			message.channel.send(message.author + " You do not have that Usable, check your spelling.")
 		}
 	}
