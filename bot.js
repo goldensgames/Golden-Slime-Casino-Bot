@@ -82,8 +82,8 @@ bot.on('message', message => {
 		lowmax = userData[sender.id + message.guild.id].luck;
 	}
 	if(userData[sender.id + message.guild.id].luck > 0){
-		highmin = userData[sender.id + message.guild.id].luck;
-		highmax = userData[sender.id + message.guild.id].luck * 2;
+		highmin = gamblecost + userData[sender.id + message.guild.id].luck;
+		highmax = (gamblecost * 2) + userData[sender.id + message.guild.id].luck * 2;
 	}
 
 	rates.itemdrop = userData[sender.id + message.guild.id].luck ;
