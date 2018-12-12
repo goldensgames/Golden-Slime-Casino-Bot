@@ -79,7 +79,7 @@ bot.on('message', message => {
 	
 	if(userData[sender.id + message.guild.id].luck < 0){
 		lowmin += userData[sender.id + message.guild.id].luck;
-		lowhigh += userData[sender.id + message.guild.id].luck;
+		lowmax += userData[sender.id + message.guild.id].luck;
 	}
 	if(userData[sender.id + message.guild.id].luck > 0){
 		highmin += userData[sender.id + message.guild.id].luck;
@@ -238,6 +238,7 @@ if(parts[0] === prefix){
 				}
 				userData[sender.id + message.guild.id].inventory.splice("Luck Potion");
 		
+				used.splice(used.length);
 				userData[sender.id + message.guild.id].inventory.push(used);
 				
 				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
