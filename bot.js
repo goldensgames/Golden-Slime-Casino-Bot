@@ -224,7 +224,7 @@ if(parts[0] === prefix){
 	
 	//Using Usables
 	if(command === prefix + "USE" + "." + who){
-		Console.log("Checking Usable");
+		console.log("Checking Usable");
 		if(usable.includes(who)){
 			if(who === "Luck Potion"){
 				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
