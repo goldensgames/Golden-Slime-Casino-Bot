@@ -78,15 +78,15 @@ bot.on('message', message => {
 	//Luck should affect all possible drops on the casino wheel, it can get really bad...
 	
 	if(userData[sender.id + message.guild.id].luck < 0){
-		lowmin += userData[sender.id + message.guild.id].luck;
-		lowmax += userData[sender.id + message.guild.id].luck;
+		lowmin = userData[sender.id + message.guild.id].luck / 2;
+		lowmax = userData[sender.id + message.guild.id].luck;
 	}
 	if(userData[sender.id + message.guild.id].luck > 0){
-		highmin += userData[sender.id + message.guild.id].luck;
-		highmax += userData[sender.id + message.guild.id].luck * 2;
+		highmin = userData[sender.id + message.guild.id].luck;
+		highmax = userData[sender.id + message.guild.id].luck * 2;
 	}
 
-	rates.itemdrop += userData[sender.id + message.guild.id].luck;
+	rates.itemdrop = userData[sender.id + message.guild.id].luck;
 	
 	if(rates.itemdrop <= 1){ //Balancing Item Drop Rates
 		rates.itemdrop = 1;
