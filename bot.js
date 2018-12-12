@@ -94,7 +94,16 @@ bot.on('message', message => {
 	if(rates.itemdrop >= rates.high){
 		rates.itemdrop = rates.high - 1;
 	}
-	
+if(msg === prefix + 'TEST'  && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+	console.log(userData[sender.id + message.guild.id].luck + "luck")
+	console.log(lowmin + "low min")
+	console.log(lowmax + "low max")
+	console.log(highmin + "high min")
+	console.log(highmax + "high max")
+	console.log(rates.itemdrop + "item drop rate")
+	console.log(rates.high + "win rate")
+
+}
 //Draws a winning ticket, will be a two times daily event.(ADMIN COMMAND)
 if(msg === prefix + 'DRAW' && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 	//Drawing Number
