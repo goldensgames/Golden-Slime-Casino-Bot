@@ -225,18 +225,28 @@ if(parts[0] === prefix){
 	//Using Usables
 	if(command === prefix + "USE" + "." + who){
 		console.log("Checking Usable");
-		if(usable.includes(who) === true){
-			if(who === "Luck Potion"){
+		if(usable.includes(item) === true){
+			var used = [];
+			if(item === "Luck Potion"){
 				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
 				userData[sender.id + message.guild.id].luck += change;
 				console.log(userData[sender.id + message.guild.id].luck);
+				for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
+					if(userData[sender.id + message.guild.id].inventory[i] === "Luck Potion"){
+					 	used.push["Luck Potion"];
+					}
+				}
+				userData[sender.id + message.guild.id].inventory.splice("Luck Potion");
+		
+				userData[sender.id + message.guild.id].inventory.push(used);
+				
 				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
 			}
-			if(who === "Zen Potion"){
+			if(item === "Zen Potion"){
 				userData[sender.id + message.guild.id].luck = 0;
 				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
 			}
-		} else if(usable.incudes(who) === false){
+		} else if(usable.incudes(item) === false){
 			message.channel.send(message.author + " You do not have that Usable, check your spelling.")
 		}
 	}
