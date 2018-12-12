@@ -40,8 +40,8 @@ var redeem = ["Slime Lock Box"];
 var usable = ["Luck Potion","Zen Potion"];
 
 var luckPotion = {
-	lowend: -10,
-	highend: 10
+	lowend: -5,
+	highend: 5
 };
 
 function countInArray(array, what) {
@@ -78,7 +78,7 @@ bot.on('message', message => {
 	//Luck should affect all possible drops on the casino wheel, it can get really bad...
 	
 	if(userData[sender.id + message.guild.id].luck < 0){
-		lowmin = userData[sender.id + message.guild.id].luck / 2;
+		lowmin = userData[sender.id + message.guild.id].luck - 5;
 		lowmax = userData[sender.id + message.guild.id].luck;
 	}
 	if(userData[sender.id + message.guild.id].luck > 0){
@@ -86,10 +86,10 @@ bot.on('message', message => {
 		highmax = userData[sender.id + message.guild.id].luck * 2;
 	}
 
-	rates.itemdrop = userData[sender.id + message.guild.id].luck;
+	rates.itemdrop = userData[sender.id + message.guild.id].luck ;
 	
 	if(rates.itemdrop <= 1){ //Balancing Item Drop Rates
-		rates.itemdrop = 1;
+		rates.itemdrop = 2;
 	}
 	if(rates.itemdrop >= rates.high){
 		rates.itemdrop = rates.high - 1;
