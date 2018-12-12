@@ -223,19 +223,20 @@ if(parts[0] === prefix){
 	
 	
 	//Using Usables
-	if(command === prefix + "USE" + " " + num){
-		if(usable.includes(num)){
-			if(num === "Luck Potion"){
+	if(command === prefix + "USE" + "." + who){
+		Console.log("Checking Usable");
+		if(usable.includes(who)){
+			if(who === "Luck Potion"){
 				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
 				userData[sender.id + message.guild.id].luck += change;
 				console.log(userData[sender.id + message.guild.id].luck);
 				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
 			}
-			if(num === "Zen Potion"){
+			if(who === "Zen Potion"){
 				userData[sender.id + message.guild.id].luck = 0;
 				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
 			}
-		} else if(!usable.incudes(num)){
+		} else if(!usable.incudes(who)){
 			message.channel.send(message.author + " You do not have that Usable, check your spelling.")
 		}
 	}
