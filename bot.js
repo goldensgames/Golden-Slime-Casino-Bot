@@ -258,6 +258,25 @@ if(parts[0] === prefix){
 			}
 			if(item === "Zen Potion"){
 				userData[sender.id + message.guild.id].luck = 0;
+				
+				for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
+					if(userData[sender.id + message.guild.id].inventory[i] === "Zen Potion"){
+					 	used.push(userData[sender.id + message.guild.id].inventory[i]);
+					} else {
+						other.push(userData[sender.id + message.guild.id].inventory[i])
+					}
+				}
+				userData[sender.id + message.guild.id].inventory.splice("Luck Potion");
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(used[i]);
+				}
 				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
 			}
 		} else if(usable.incudes(item) === false){
