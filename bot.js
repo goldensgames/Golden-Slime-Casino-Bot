@@ -227,19 +227,24 @@ if(parts[0] === prefix){
 		console.log("Checking Usable");
 		if(usable.includes(item) === true){
 			var used = [];
+			var other = [];
 			if(item === "Luck Potion"){
 				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
 				userData[sender.id + message.guild.id].luck += change;
 				console.log(userData[sender.id + message.guild.id].luck);
 				for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
 					if(userData[sender.id + message.guild.id].inventory[i] === "Luck Potion"){
-					 	used.push["Luck Potion"];
+					 	used.push(userData[sender.id + message.guild.id].inventory[i]);
+					} else {
+						other.push(userData[sender.id + message.guild.id].inventory[i])
 					}
 				}
 				userData[sender.id + message.guild.id].inventory.splice("Luck Potion");
 		
 				used.splice(used.length);
+				userData[sender.id + message.guild.id].inventory.push(other);
 				userData[sender.id + message.guild.id].inventory.push(used);
+				
 				
 				message.channel.send(message.author + " You drunk a Luck Potion... you start to feel weird.")
 			}
