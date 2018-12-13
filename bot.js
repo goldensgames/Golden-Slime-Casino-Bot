@@ -301,6 +301,26 @@ if(parts[0] === prefix){
 			if(item === "Golden Slime Prize Box"){
 				var drop = Math.floor(Math.random() * (+goldenpool.length - +0)) + +0
 				var drops = [];
+				
+				for(i = 0; i < userData[sender.id + message.guild.id].inventory.length; i++){
+					if(userData[sender.id + message.guild.id].inventory[i] === "Golden Slime Prize Box"){
+					 	used.push(userData[sender.id + message.guild.id].inventory[i]);
+					} else {
+						other.push(userData[sender.id + message.guild.id].inventory[i])
+					}
+				}
+				userData[sender.id + message.guild.id].inventory.splice("Golden Slime Prize Box");
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					userData[sender.id + message.guild.id].inventory.push(used[i]);
+				}
+				
 				for(i = 0; i < goldenpool.length; i++){
 					if(drop === i){
 						userData[sender.id + message.guild.id].inventory.push(goldenpool[i]);
