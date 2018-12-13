@@ -385,7 +385,9 @@ if(parts[0] === prefix){
 				}
 			for(i = 0; i < redeem.length; i++){
 					if(redeem[i] === item){
-					 	used.push(redeem[i]);
+						if(!item === "Luck Potion" && !item === "Zen Potion){
+					 	used.push(redeem[i])
+						}
 					} else {
 						other.push(redeem[i])
 					}
@@ -436,7 +438,9 @@ if(parts[0] === prefix){
 				}
 			for(i = 0; i < redeem.length; i++){
 					if(redeem[i] === item){
-					 	used.push(redeem[i]);
+						if(!item === "Luck Potion" && !item === "Zen Potion){
+						   used.push(redeem[i]);
+						}		 	
 					} else {
 						other.push(redeem[i])
 					}
