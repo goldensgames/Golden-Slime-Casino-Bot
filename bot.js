@@ -241,7 +241,7 @@ if(parts[0] === prefix){
 	//Using Usables
 	if(command === prefix + "USE" + "." + who){
 		console.log("Checking Usable");
-		if(usable.includes(item) === true){
+		if(usable.includes(item) === true && userData[sender.id + message.guild.id].inventory.includes(item) === true) {
 			var used = [];
 			var other = [];
 			if(item === "Luck Potion"){
