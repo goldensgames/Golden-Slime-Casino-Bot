@@ -81,6 +81,12 @@ bot.on('message', message => {
 		lowmin = userData[sender.id + message.guild.id].luck - 5;
 		lowmax = userData[sender.id + message.guild.id].luck;
 	}
+	if(userData[sender.id + message.guild.id].luck === 0){
+		lowmin = 1; //Lowest Roll on a loss
+		lowmax = gamblecost / 2; //Highest Roll on a loss
+		highmin = gamblecost; //Lowest Roll on a Win
+		highmax = gamblecost * 2; //Highest Roll on a win
+	}
 	if(userData[sender.id + message.guild.id].luck > 0){
 		highmin = gamblecost + userData[sender.id + message.guild.id].luck;
 		highmax = (gamblecost * 2) + userData[sender.id + message.guild.id].luck * 2;
