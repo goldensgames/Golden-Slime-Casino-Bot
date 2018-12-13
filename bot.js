@@ -470,13 +470,18 @@ if(parts[0] === prefix){
 		var check = message.content.substring(message.content.indexOf("!"), message.content.length - 1);
 		console.log(check);
 		let id = message.content.substring(message.content.indexOf("!") + 1, message.content.length - 1);
-		if(id === undefined){
-			let id = message.content.substring(message.content.indexOf(".") + 3, message.content.length - 1);
-		}
+		
+		let idd = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
+		
 		var count = parseInt(amount);
 		console.log(id);
 		console.log(id + message.guild.id);
-		userData[id + message.guild.id].tokens += count;
+		if(id === undefined){
+			userData[idd + message.guild.id].tokens += count;
+		} else {
+			userData[id + message.guild.id].tokens += count;
+		}
+		
 		message.channel.send("Tokens successfully given");
 		console.log("Success");
 	}
