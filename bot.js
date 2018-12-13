@@ -57,6 +57,8 @@ function countInArray(array, what) {
 
 bot.on('message', message => {
 	var itemgets = [];
+	var used = [];
+	var other = [];
 	
 	let sender = message.author;
 	let msg = message.content.toUpperCase();
@@ -245,8 +247,7 @@ if(parts[0] === prefix){
 	if(command === prefix + "USE" + "." + who){
 		console.log("Checking Usable");
 		if(usable.includes(item) === true && userData[sender.id + message.guild.id].inventory.includes(item) === true) {
-			var used = [];
-			var other = [];
+			
 			if(item === "Luck Potion"){
 				var change = Math.floor(Math.random() * (+luckPotion.highend - +luckPotion.lowend)) + +luckPotion.lowend
 				userData[sender.id + message.guild.id].luck += change;
@@ -364,9 +365,42 @@ if(parts[0] === prefix){
 	if(command === prefix + "REMOVEPOOL" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(goldenpool.includes(item) && redeem.includes(item)){
 			//Removes the item from the drop table.
-			goldenpool.splice(item);
-			redeem.splice(item);
-			message.channel.send("Item Successfully Removed");
+			for(i = 0; i < goldenpool.length; i++){
+					if(goldenpool[i] === item){
+					 	used.push(goldenpool[i]);
+					} else {
+						other.push(goldenpool[i])
+					}
+				}
+				goldenpool.splice(item);
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					goldenpool.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					goldenpool.push(used[i]);
+				}
+			for(i = 0; i < redeem.length; i++){
+					if(redeem[i] === item){
+					 	used.push(redeem[i]);
+					} else {
+						other.push(redeem[i])
+					}
+				}
+				redeem.splice(item);
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					redeem.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					redeem.push(used[i]);
+				}
 		}	
 	}
 	if(command === prefix + "ADD" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
@@ -381,9 +415,42 @@ if(parts[0] === prefix){
 	if(command === prefix + "REMOVE" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(item) && redeem.includes(item)){
 			//Removes the item from the drop table.
-			itemdroptable.splice(item);
-			redeem.splice(item);
-			message.channel.send("Item Successfully Removed");
+			for(i = 0; i < itemdroptable.length; i++){
+					if(itemdroptable[i] === item){
+					 	used.push(itemdroptable[i]);
+					} else {
+						other.push(itemdroptable[i])
+					}
+				}
+				itemdroptable.splice(item);
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					itemdroptable.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					itemdroptable.push(used[i]);
+				}
+			for(i = 0; i < redeem.length; i++){
+					if(redeem[i] === item){
+					 	used.push(redeem[i]);
+					} else {
+						other.push(redeem[i])
+					}
+				}
+				redeem.splice(item);
+				
+				var position = used.indexOf(used.length);
+				used.splice(position);
+				
+				for(i = 0; i < other.length; i++){
+					redeem.push(other[i]);
+				}
+				for(i = 0; i < used.length; i++){
+					redeem.push(used[i]);
+				}
 		}	
 	}
 	if(command === prefix + "TABLE"){
