@@ -476,9 +476,9 @@ if(parts[0] === prefix){
 		var count = parseInt(amount);
 		console.log(id);
 		console.log(id + message.guild.id);
-		if(id === undefined){
+		if(userData[id + message.guild.id].tokens === undefined){
 			userData[idd + message.guild.id].tokens += count;
-		} else {
+		} else if (userData[idd + message.guild.id].tokens === undefined){
 			userData[id + message.guild.id].tokens += count;
 		}
 		
