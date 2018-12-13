@@ -475,7 +475,7 @@ if(parts[0] === prefix){
 		}
 		var count = parseInt(amount);
 		console.log(id);
-		console.log(sender.id + message.guild.id);
+		console.log(id + message.guild.id);
 		userData[id + message.guild.id].tokens += count;
 		message.channel.send("Tokens successfully given");
 		console.log("Success");
