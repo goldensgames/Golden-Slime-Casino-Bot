@@ -97,7 +97,7 @@ bot.on('message', message => {
 	rates.itemdrop = rates.itemdrop + userData[sender.id + message.guild.id].luck;
 	rates.high = rates.high + userData[sender.id + message.guild.id].luck;
 	
-	if(rates.itemdrop <= 1){ //Balancing Item Drop Rates
+	if(rates.itemdrop < 0){ //Balancing Item Drop Rates
 		rates.itemdrop = 2;
 	}
 	if(rates.itemdrop >= rates.high){
