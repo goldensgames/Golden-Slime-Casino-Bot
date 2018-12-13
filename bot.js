@@ -471,7 +471,7 @@ if(parts[0] === prefix){
 		console.log(check);
 		let id = message.content.substring(message.content.indexOf("!") + 1, message.content.length - 1);
 		if(id === undefined){
-			let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
+			let id = message.content.substring(message.content.indexOf(".") + 3, message.content.length - 1);
 		}
 		var count = parseInt(amount);
 		console.log(id);
