@@ -467,11 +467,11 @@ if(parts[0] === prefix){
 	}
 	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
-		var check = message.content.substring(message.content.indexOf("!"));
+		var check = message.content.substring(message.content.indexOf("!"), message.content.indexOf("!"));
 		console.log(check);
 		if(check === "!"){
 			let id = message.content.substring(message.content.indexOf("!") + 1, message.content.length - 1);
-		} else {
+		} else if(check != "!"){
 			let id = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
 		}
 		var count = parseInt(amount);
