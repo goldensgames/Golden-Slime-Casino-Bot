@@ -94,8 +94,8 @@ bot.on('message', message => {
 		highmax = (gamblecost * 2) + userData[sender.id + message.guild.id].luck * 2;
 	}
 
-	rates.itemdrop = rates.itemdrop + userData[sender.id + message.guild.id].luck;
-	rates.high = rates.high + userData[sender.id + message.guild.id].luck;
+	rates.itemdrop = 10 + userData[sender.id + message.guild.id].luck;
+	rates.high = 40 + userData[sender.id + message.guild.id].luck;
 	
 	if(rates.itemdrop < 0){ //Balancing Item Drop Rates
 		rates.itemdrop = 2;
