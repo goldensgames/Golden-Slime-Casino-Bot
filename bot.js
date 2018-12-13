@@ -87,13 +87,15 @@ bot.on('message', message => {
 		highmin = gamblecost; //Lowest Roll on a Win
 		highmax = gamblecost * 2; //Highest Roll on a win
 		rates.itemdrop = 10;
+		rates.high = 40;
 	}
 	if(userData[sender.id + message.guild.id].luck > 0){
 		highmin = gamblecost + userData[sender.id + message.guild.id].luck;
 		highmax = (gamblecost * 2) + userData[sender.id + message.guild.id].luck * 2;
 	}
 
-	rates.itemdrop = rates.itemdrop + userData[sender.id + message.guild.id].luck ;
+	rates.itemdrop = rates.itemdrop + userData[sender.id + message.guild.id].luck;
+	rates.high = rates.high + userData[sender.id + message.guild.id].luck;
 	
 	if(rates.itemdrop <= 1){ //Balancing Item Drop Rates
 		rates.itemdrop = 2;
