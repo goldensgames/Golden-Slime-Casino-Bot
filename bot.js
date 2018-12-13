@@ -15,9 +15,6 @@ Redemption Shop and Item Drop Rework -
 More organized inventory - Scrapped
 Daily Reward Buff - 
 Zen Potion - Compelted
-
-
-
 */
 
 var winningnumber;
@@ -33,12 +30,16 @@ var rates = {
 	itemdrop:10, //Item Drop Rate
 	high:40 //Win Rate
 };
-var itemdroptable = ["Slime Lock Box","Luck Potion","Zen Potion"];
+var itemdroptable = ["Slime Lock Box","Luck Potion","Zen Potion","Golden Slime Prize Box"];
 
 var redeem = ["Slime Lock Box"];
 
-var usable = ["Luck Potion","Zen Potion"];
+var usable = ["Luck Potion","Zen Potion","Golden Slime Prize Box"];
 
+//Golden Slime Prize Box
+var goldenpool = ["Hallow Sensor Unit"];
+
+	
 var luckPotion = {
 	lowend: -5,
 	highend: 5
@@ -297,9 +298,56 @@ if(parts[0] === prefix){
 				}
 				message.channel.send(message.author + " You drunk a Zen Potion... you feel balanced.")
 			}
+			if(item === "Golden Slime Prize Box"){
+				var drop = Math.floor(Math.random() * (+goldenpool.length - +0)) + +0
+				var drops = [];
+				for(i = 0; i < goldenpool.length; i++){
+					if(drop === i){
+						userData[sender.id + message.guild.id].inventory.push(goldenpool[i]);
+						drops.push(goldenpool[i]);
+					}		
+				}
+				const embed = new Discord.RichEmbed()
+				  .setTitle("Golden Slime Prize Box Unboxing")
+				  .setAuthor(message.author.username)
+				  /*
+				   * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
+				   */
+				  .setColor(0xF1C40F)
+				  .setDescription("You have unboxed a Golden Slime Prize Box!")
+				  embed.addField("You have unboxed...", drops)
+				  .setFooter("Have Fun!")
+				  //.setImage("http://i.imgur.com/yVpymuV.png")
+				  //.setThumbnail("https://imgur.com/EJQmL0g")
+				  /*
+				   * Takes a Date object, defaults to current date.
+				   */
+				  .setTimestamp()
+				  
+				   message.channel.send({embed});
+  
+  
+			}
 		} else if(usable.includes(item) === false){
 			message.channel.send(message.author + " You do not have that Usable, check your spelling.")
 		}
+	}
+	if(command === prefix + "ADDPOOL" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(goldenpool.includes(item)){
+			message.channel.send("That item is already in the prize pool");
+		} else {
+			goldenpool.push(item)
+			redeem.push(item)
+			message.channel.send("Item Successfully Added");
+		}
+	}
+	if(command === prefix + "REMOVEPOOL" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		if(goldenpool.includes(item) && redeem.includes(item)){
+			//Removes the item from the drop table.
+			goldenpool.splice(item);
+			redeem.splice(item);
+			message.channel.send("Item Successfully Removed");
+		}	
 	}
 	if(command === prefix + "ADD" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		if(itemdroptable.includes(item)){
@@ -320,6 +368,9 @@ if(parts[0] === prefix){
 	}
 	if(command === prefix + "TABLE"){
 		message.channel.send(itemdroptable);
+	}
+	if(command === prefix + "POOL"){
+		message.channel.send(goldenpool);
 	}
 	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
@@ -398,7 +449,7 @@ if(command === prefix + "SPIN" + " " + num){
 				for(f = 0; f < itemdroptable.length; f++){
 					if(f === yourdrop){
 						itemgets.push(itemdroptable[f]);
-						userData[sender.id + message.guild.id].inventory.push(itemdroptable[f]);
+						userData[sender.id + message.guild.id].inventory.push(itemdroptable[f]);			
 					}
 				}		
 			}
@@ -516,4 +567,3 @@ bot.on('ready', () => {
 })
 
 bot.login(process.env.BOT_TOKEN)
-
