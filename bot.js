@@ -401,6 +401,7 @@ if(parts[0] === prefix){
 				for(i = 0; i < used.length; i++){
 					redeem.push(used[i]);
 				}
+			message.channel.send("Item Successfully Removed");
 		}	
 	}
 	if(command === prefix + "ADD" + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
@@ -451,6 +452,7 @@ if(parts[0] === prefix){
 				for(i = 0; i < used.length; i++){
 					redeem.push(used[i]);
 				}
+			message.channel.send("Item Successfully Removed");
 		}	
 	}
 	if(command === prefix + "TABLE"){
