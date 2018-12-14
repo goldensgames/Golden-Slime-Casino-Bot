@@ -32,7 +32,7 @@ var rates = {
 };
 var itemdroptable = ["Slime Lock Box","Luck Potion","Zen Potion","Golden Slime Prize Box"];
 
-var redeem = ["Slime Lock Box"];
+var redeem = ["Slime Lock Box","Hallow Sensor Unit"];
 
 var usable = ["Luck Potion","Zen Potion","Golden Slime Prize Box"];
 
