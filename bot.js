@@ -477,9 +477,9 @@ if(parts[0] === prefix){
 		console.log(id);
 		console.log(id + message.guild.id);
 		if(check === message.content.indexOf("!")){
-			userData[idd + message.guild.id].tokens += count;
-		} else{
 			userData[id + message.guild.id].tokens += count;
+		} else{
+			userData[idd + message.guild.id].tokens += count;
 		}
 		
 		message.channel.send("Tokens successfully given");
