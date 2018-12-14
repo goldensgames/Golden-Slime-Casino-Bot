@@ -477,7 +477,7 @@ if(parts[0] === prefix){
 		console.log(id);
 		console.log(id + message.guild.id);
 		console.log(idd);
-		if(check === message.content.indexOf("!")){
+		if(message.content.includes("!")){
 			userData[id + message.guild.id].tokens += count;
 		} else{
 			userData[idd + message.guild.id].tokens += count;
