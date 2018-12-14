@@ -467,7 +467,7 @@ if(parts[0] === prefix){
 	}
 	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
-		var check = message.content.substring(message.content.indexOf("!"), message.content.length - 1);
+		var check = message.content.indexOf("!");
 		console.log(check);
 		let id = message.content.substring(message.content.indexOf("!") + 1, message.content.length - 1);
 		
@@ -476,10 +476,10 @@ if(parts[0] === prefix){
 		var count = parseInt(amount);
 		console.log(id);
 		console.log(id + message.guild.id);
-		if(idd === undefined){
-			userData[id + message.guild.id].tokens += count;
-		} else if (id === undefined){
+		if(check === undefined){
 			userData[idd + message.guild.id].tokens += count;
+		} else{
+			userData[id + message.guild.id].tokens += count;
 		}
 		
 		message.channel.send("Tokens successfully given");
