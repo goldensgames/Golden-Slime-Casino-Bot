@@ -71,7 +71,7 @@ bot.on('message', message => {
 	
 	if (!userData[sender.id + message.guild.id]) userData[sender.id + message.guild.id] = {}
 	
-	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 50;
+	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
     if (userData[sender.id + message.guild.id].inventory === undefined) userData[sender.id + message.guild.id].inventory = items;
 	if (userData[sender.id + message.guild.id].luck === undefined) userData[sender.id + message.guild.id].luck = 0;
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
@@ -478,8 +478,10 @@ if(parts[0] === prefix){
 		console.log(id + message.guild.id);
 		console.log(idd);
 		if(message.content.includes("!")){
+			if (userData[id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
 			userData[id + message.guild.id].tokens += count;
 		} else{
+			if (userData[idd + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
 			userData[idd + message.guild.id].tokens += count;
 		}
 		
@@ -499,8 +501,10 @@ if(parts[0] === prefix){
 		console.log(id + message.guild.id);
 		console.log(idd);
 		if(message.content.includes("!")){
+			if (userData[id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
 			userData[id + message.guild.id].tokens -= count;
 		} else{
+			if (userData[idd + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
 			userData[idd + message.guild.id].tokens -= count;
 		}
 		
