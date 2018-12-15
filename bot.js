@@ -486,6 +486,27 @@ if(parts[0] === prefix){
 		message.channel.send("Tokens successfully given");
 		console.log("Success");
 	}
+	if(command === prefix + "TAKE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
+		console.log("Taking " + amount + " Tokens");
+		var check = message.content.indexOf("!");
+		console.log(check);
+		let id = message.content.substring(message.content.indexOf("!") + 1, message.content.length - 1);
+		
+		let idd = message.content.substring(message.content.indexOf("@") + 1, message.content.length - 1);
+		
+		var count = parseInt(amount);
+		console.log(id);
+		console.log(id + message.guild.id);
+		console.log(idd);
+		if(message.content.includes("!")){
+			userData[id + message.guild.id].tokens -= count;
+		} else{
+			userData[idd + message.guild.id].tokens -= count;
+		}
+		
+		message.channel.send("Tokens successfully removed");
+		console.log("Success");
+	}
 	if(command === prefix + "PING" + " " + num){
 		var times = parseInt(num);
 		for(i = 0; i < times; i++){
