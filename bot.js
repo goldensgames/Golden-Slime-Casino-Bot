@@ -225,7 +225,7 @@ if(parts[0] === prefix){
 	let num = message.content.substring(message.content.indexOf(" ") + 1, message.content.length);
 	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	let item = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
-	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf(" ")+2);
+	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf(".") - 1);
 	
 	console.log(command + " command");
 	console.log(num + " num");	
