@@ -77,6 +77,10 @@ bot.on('message', message => {
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
 	
+	//Update your token count
+	fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+		if(err) console.error(err);
+	})
 	//Applying Luck Stat, Requirements(Should affect item drop rates, and the best possible wins)
 	//Luck should affect all possible drops on the casino wheel, it can get really bad...
 	
@@ -226,6 +230,7 @@ if(parts[0] === prefix){
 	let who = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	let item = message.content.substring(message.content.indexOf(".") + 1, message.content.length);
 	let amount = message.content.substring(message.content.indexOf(" ") + 1, message.content.indexOf("."));
+	
 	
 	console.log(command + " command");
 	console.log(num + " num");	
@@ -684,10 +689,7 @@ if(msg === prefix + 'LOTTERY' || msg === prefix + 'POT'){
 if(userData[sender.id + message.guild.id].tokens <= 0){
 	userData[sender.id + message.guild.id].tokens = 0;
 }
-//Update your token count
-fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-	if(err) console.error(err);
-})
+
 }})
 
 bot.on('ready', () => {
