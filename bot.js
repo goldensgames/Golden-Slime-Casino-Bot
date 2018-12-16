@@ -71,16 +71,14 @@ bot.on('message', message => {
 	
 	if (!userData[sender.id + message.guild.id]) userData[sender.id + message.guild.id] = {}
 	
-	if (userData[sender.id + message.guild.id].tokens === undefined) {userData[sender.id + message.guild.id].tokens = 30}
+	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
     if (userData[sender.id + message.guild.id].inventory === undefined) userData[sender.id + message.guild.id].inventory = items;
 	if (userData[sender.id + message.guild.id].luck === undefined) userData[sender.id + message.guild.id].luck = 0;
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
 	
 	//Update your token count
-	fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-		if(err) console.error(err);
-	})
+
 	//Applying Luck Stat, Requirements(Should affect item drop rates, and the best possible wins)
 	//Luck should affect all possible drops on the casino wheel, it can get really bad...
 	
@@ -690,6 +688,9 @@ if(userData[sender.id + message.guild.id].tokens <= 0){
 	userData[sender.id + message.guild.id].tokens = 0;
 }
 
+	fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+		if(err) console.error(err);
+	})	
 }})
 
 bot.on('ready', () => {
