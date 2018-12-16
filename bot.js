@@ -71,7 +71,7 @@ bot.on('message', message => {
 	
 	if (!userData[sender.id + message.guild.id]) userData[sender.id + message.guild.id] = {}
 	
-	if (userData[sender.id + message.guild.id].tokens === undefined) userData[sender.id + message.guild.id].tokens = 30;
+	if (userData[sender.id + message.guild.id].tokens === undefined) {userData[sender.id + message.guild.id].tokens = 30}
     if (userData[sender.id + message.guild.id].inventory === undefined) userData[sender.id + message.guild.id].inventory = items;
 	if (userData[sender.id + message.guild.id].luck === undefined) userData[sender.id + message.guild.id].luck = 0;
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
