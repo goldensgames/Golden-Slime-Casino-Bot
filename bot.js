@@ -77,6 +77,7 @@ bot.on('message', message => {
 	if (!userData[sender.id + message.guild.id].lastDaily) userData[sender.id + message.guild.id].lastDaily = 'Not Collected';
 	if (userData.pot === undefined) userData.pot = 50;
 	
+	console.log(userData);
 	//Update your token count
 
 	//Applying Luck Stat, Requirements(Should affect item drop rates, and the best possible wins)
