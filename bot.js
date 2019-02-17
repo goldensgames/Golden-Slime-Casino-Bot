@@ -465,10 +465,10 @@ if(parts[0] === prefix){
 		}	
 	}
 	if(command === prefix + "TABLE"){
-		message.channel.send(itemdroptable);
+		message.author.send(itemdroptable);
 	}
 	if(command === prefix + "POOL"){
-		message.channel.send(goldenpool);
+		message.author.send(goldenpool);
 	}
 	if(command === prefix + "GIVE" + " " + amount + "." + who && sender.id + message.guild.id === "198866287470837760504453118835032066"){
 		console.log("Giving " + amount + " Tokens");
@@ -669,21 +669,21 @@ if(msg === prefix + 'BANK' || msg === prefix + 'ACCOUNT' || msg === prefix + 'IN
   //.addBlankField(true)
   //.addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
-  message.channel.send({embed});
+  message.author.send({embed});
 	}
 
 if(msg === prefix + 'DAILY'){
 	if(userData[sender.id + message.guild.id].lastDaily != moment().format('L')) { 	//Checks if the lastdaily object is the same as date
 	   userData[sender.id + message.guild.id].lastDaily = moment().format('L') //Switches last daily with current
 	   userData[sender.id + message.guild.id].tokens += 20; //Adds in the money
-	   message.channel.send(message.author +" Daily Claimed for 20 tokens");
+	   message.author.send(message.author +" Daily Claimed for 20 tokens");
 	} else {
-		message.channel.send(message.author +" You have already claimed your daily  You can collect your next reward " + moment().endOf('day').fromNow() +'.');
+		message.author.send(message.author +" You have already claimed your daily  You can collect your next reward " + moment().endOf('day').fromNow() +'.');
 	}
 }
 
 if(msg === prefix + 'LOTTERY' || msg === prefix + 'POT'){
-	 message.channel.send(message.author +" The current pot is " + userData.pot + " tokens");
+	 message.author.send(message.author +" The current pot is " + userData.pot + " tokens");
 }
 
 if(userData[sender.id + message.guild.id].tokens <= 0){
